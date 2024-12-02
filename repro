@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -o errexit
+set -o nounset
+set -o pipefail
+
+while true; do
+  echo .
+  buf build protos --type hub.playground.v1.CerbosService --output descriptors.yaml
+  git diff --exit-code
+  sleep 0.2
+done
